@@ -1,0 +1,3 @@
+version: "2"
+linters:
+  enable-all: true
