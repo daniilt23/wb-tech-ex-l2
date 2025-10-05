@@ -1,3 +1,6 @@
 version: "2"
 linters:
-  enable-all: true
+  enable:     
+    - intrange   
+    - perfsprint
+    - gocritic   
