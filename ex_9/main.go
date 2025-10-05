@@ -10,7 +10,7 @@ import (
 func main() {
 	var s string
 	fmt.Scanf("%s", &s)
-	answer, err := checkCondition(s)
+	answer, err := CheckCondition(s)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -18,7 +18,7 @@ func main() {
 	fmt.Println(answer)
 }
 
-func checkCondition(s string) (string, error) {
+func CheckCondition(s string) (string, error) {
 	if len(s) == 0 {
 		return "", nil
 	}
@@ -41,9 +41,11 @@ func stringUnpacking(sSplit []string) []string {
 	answer := []string{}
 	answer = append(answer, sSplit[0])
 	for i := 1; i < len(sSplit); i++ {
-		if sSplit[i] == "\\" {
+		if sSplit[i] == "\\" { // доп условие на escape-последовательности
+			if (i+2 < len(sSplit) && sSplit[i+2] == "\\") || (i+2 == len(sSplit)) {
+				answer = append(answer, sSplit[i+1])
+			}
 			i++
-			answer = append(answer, sSplit[i])
 			continue
 		}
 		if isDigit(sSplit[i]) {
