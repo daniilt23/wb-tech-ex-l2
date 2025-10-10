@@ -9,3 +9,5 @@ linters:
     errcheck:
       check-type-assertions: true
       check-blank: true  
+    unused:
+      parameters-are-used: false
